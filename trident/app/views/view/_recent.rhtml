@@ -1,0 +1,25 @@
+<div class="sidebar">
+	<h3>Recent Snippets</h3>
+	<div class="snippets">
+	<% for snippet in recent_snippets %>
+	    <div class="icon">
+			<b><%= link_to truncate(snippet.method_name,16), :controller => 'view', :action => 'snippet', :id => snippet %></b> v.<%= snippet.version %><br />
+			<p>by <%= link_to snippet.user.login, :controller => 'view', :action => 'user', :id => snippet.user %> <!-- <%= time_ago_in_words(snippet.created_on) %> ago --></p>
+		</div>
+	<% end %>
+	</div>
+</div>
+<div class="sidebar">
+	<h3>Recent Comments</h3>
+	<div class="comments">
+	<% for comment in recent_comments %>
+	    <div class="icon comment">
+			<% if comment.user.nil? %>
+				<p><b><a href="mailto:<%= comment.email %>"><%= comment.name %></a></b> said <span>"<%= link_to html_escape(truncate(comment.body,65)), :controller => 'view', :action => 'snippet', :id => comment.snippet_id %></span></p>
+			<% else %>
+				<p><b><%= link_to comment.user.login, :controller => 'view', :action => 'user', :id => comment.user_id %></b> said <span>"<%= link_to html_escape(truncate(comment.body,65)), :controller => 'view', :action => 'snippet', :id => comment.snippet_id %></span></p>
+			<% end %>
+		</div>
+	<% end %>
+	</div>
+</div>

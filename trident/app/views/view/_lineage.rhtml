@@ -1,0 +1,55 @@
+<% unless @snippet[:includes].blank? && @snippet[:includers].blank? %>
+<div id="includes" style="float:right;" class="sidebar">
+	<h3>Snippets <i>included by</i><br /><em><%= @snippet.method_name %></em> v.<%= @snippet.version %></h3>
+	<div class="snippets">
+	<% if @snippet[:includes].blank? %><p>None</p><% end %>
+	<% for snippet in @snippet[:includes][0..8] %>
+		<% unless snippet.nil? %>
+		<div class="icon">
+			<b class="includedbythis"><%= link_to truncate(snippet.method_name,16), :controller => 'view', :action => 'snippet', :id => snippet %></b> v.<%= snippet.version %><br />
+			<p>by <%= link_to snippet.user.login, :controller => 'view', :action => 'user', :id => snippet.user %> <!-- <%= time_ago_in_words(snippet.created_on) %> ago --></p>
+		</div>
+		<% end %>
+	<% end %>
+	<% if @snippet[:includes].size > 8 %>See <a href="/view/lineage/<%= @snippet.id %>">full snippet lineage &raquo;</a><% end %>
+	</div>
+	<h3>Snippets that <i>include</i><br /><em><%= @snippet.method_name %></em> v.<%= @snippet.version %></h3>
+	<div class="snippets">
+	<% if @snippet[:includers].blank? %><p>None</p><% end %>
+	<% for snippet in @snippet[:includers][0..8] %>
+		<div class="icon">
+			<b class="thatincludethis"><%= link_to truncate(snippet.method_name,16), :controller => 'view', :action => 'snippet', :id => snippet %></b> v.<%= snippet.version %><br />
+			<p>by <%= link_to snippet.user.login, :controller => 'view', :action => 'user', :id => snippet.user %> <!-- <%= time_ago_in_words(snippet.created_on) %> ago --></p>
+		</div>
+	<% end %>
+	<% if @snippet[:includers].size > 8 %>See <a href="/view/lineage/<%= @snippet.id %>">full snippet lineage &raquo;</a><% end %>
+	</div>
+</div>
+<% end %>
+<% unless @snippet.descendents.blank? %>
+<div id="basedon" style="float:right;" class="sidebar">
+	<h3>Snippets <i>based on</i><br /><em><%= @snippet.method_name %></em> v.<%= @snippet.version %></h3>
+	<div class="snippets">
+	<% if @snippet.descendents.blank? %><p>None</p><% end %>
+	<% for snippet in @snippet.descendents[0..8] %>
+		<div class="icon">
+			<b><%= link_to truncate(snippet.method_name,16), :controller => 'view', :action => 'snippet', :id => snippet %></b> v.<%= snippet.version %><br />
+			<p>by <%= link_to snippet.user.login, :controller => 'view', :action => 'user', :id => snippet.user_id %> <!-- <%= time_ago_in_words(snippet.created_on) %> ago --></p>
+		</div>
+	<% end %>
+	<% if @snippet.descendents.size > 8 %>See <a href="/view/lineage/<%= @snippet.id %>">full snippet lineage &raquo;</a><% end %>
+	</div>
+</div>
+<% end %>
+<% unless @snippet.ancestor.blank? %>
+<% ancestor = @snippet.ancestor %>
+<div id="basedon" style="float:right;" class="sidebar">
+	<h3>This snippet is <i>based on</i>:</h3>
+	<div class="snippets">
+		<div class="icon">
+			<b><%= link_to truncate(ancestor.method_name,16), :controller => 'view', :action => 'snippet', :id => ancestor.id %></b> v.<%= ancestor.version %><br />
+			<p>by <%= link_to ancestor.user.login, :controller => 'view', :action => 'user', :id => ancestor.user_id %></p>
+		</div>
+	</div>
+</div>
+<% end %>

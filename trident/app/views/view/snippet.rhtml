@@ -1,0 +1,70 @@
+<div style="float:right;" class="sidebar">
+	<h3>Snippet Information</h3>
+	<p>Version: <%= @snippet.version %><% if @snippet[:latest] %> (latest)<% else %> (see <%= link_to "latest version", :id => @snippet[:latest_id] %>)<% end %></p>
+	<p>Author: <a href="/user/<%= @snippet.user.login %>"><%= @snippet.user.login %></a></p>
+	<p>Language: <%= @snippet.language %></p>
+	<p><% unless @snippet.license.blank? %>Licensed under <%= link_to @snippet.license.name, :controller => 'view', :action => 'license', :id => @snippet.license %><% end %></p>
+	<br />
+	<a style="text-decoration:none;display:block;float:left;margin-right:3px;" href="http://www.twitter.com/home?status=Try+this+snippet+from+Kogbox:+<%= @snippet.method_name %>+(<%= @snippet.user.login %>):+http://www.kogbox.com/snippet/<%= @snippet.id %>"><img src="/images/icon-twitter.png" /></a>
+	<a target="_blank" href="http://www.twitter.com/home?status=Try+this+snippet+from+Kogbox:+<%= @snippet.method_name %>+(<%= @snippet.user.login %>):+http://www.kogbox.com/snippet/<%= @snippet.id %>">Post to Twitter</a>
+	
+	<a style="clear:left;margin-top:4px;text-decoration:none;display:block;float:left;margin-right:3px;" href="http://www.facebook.com/sharer.php?u=http://www.kogbox.com/view/snippet/<%= @snippet.id %>"><img src="/images/icon-facebook.png" /></a>
+	<p style="margin-top:8px;"><a href="http://www.facebook.com/sharer.php?u=http://www.kogbox.com/view/snippet/<%= @snippet.id %>">Post to Facebook &raquo;</a></p>
+	
+	<br />
+	<h3>Other versions</h3>
+	<div id="versions">
+	<% for version in @snippet.older_short %>
+		<p class="version<% if version.id == @snippet.id %> current<% end %>"><a href="/view/snippet/<%= version.id %>">v.<%= version.version %></a> <%= version.created_on.to_date.to_s(:short) %><% if version.user_id == current_user.id %> (<%= link_to "x", {:controller => "snippets", :action => "destroy", :id => version.id}, :method => "post", :confirm => "Are you sure? There is no undo for this action." %>)<% end %> <%= "(production)" if version.release == "production" %> </p>
+	<% end %>
+	<% if @snippet.older_count > 10 %><p>(<%= @snippet.older_count %> total)</p><% end %>
+	</div>
+</div>
+
+<%= render :partial => 'lineage' %>
+
+<h1>"<a class="method_name" href="/snippet/<%= @snippet.method_name %><%= "/"+@snippet.user_id.to_s unless @snippet.eponymous? %>"><%= @snippet.method_name %></a>" <small>v.<%= @snippet.version %><% if @snippet[:latest] %> (latest)<% else %> (see <%= link_to "latest version", :id => @snippet[:latest_id] %>)<% end %></small></h1>
+<div id="main">
+	<h3>Description</h3>
+	<p class="description"><% if @snippet.description.blank? %>No description.<% else %><%= textilize(@snippet.description.to_s) %><% end %></p>
+	<br />
+	<p><% if @snippet.published == "public" || @snippet.user == current_user %><a class="button" href="http://run.kogbox.com/<%= @snippet.language %>/<%= @snippet.user_id %>/<%= @snippet.method_name %><% unless @snippet[:latest] %>/<%= @snippet.version %><% end %><% if @snippet.user == current_user && @snippet.published == "private" %>&key=<%= @key %><% end %>" target="_blank">Run</a> 
+	<% else %>
+	(snippet private)
+	<% end %>
+	<% if @snippet.user == current_user %> | <a target="_blank" href="/snippets/editor/<%= @snippet.id %>">Edit</a><% end %> <% unless @snippet.license.blank? %>| <a href="javascript:void(0);" onClick="$('viewCode').toggle();viewCodeArea.toggleEditor()">View code [+]</a> <% end %><% if !@snippet.license.blank? && @snippet.user_id != current_user.id %>| <a class="icon" href="/snippets/duplicate/<%= @snippet.id %>"><img src="/images/icons/page_white_add.png"/></a> <a href="/snippets/duplicate/<%= @snippet.id %>">Create a snippet based on this &raquo;</a><% end %>
+	</p>
+	<% unless @snippet.license.blank? %>
+	<div id="viewCode" style="display:none;">
+	<p><a href="http://run.kogbox.com/code/?u=<%= @snippet.user_id %>&m=<%= @snippet.method_name %><% unless @snippet[:latest] %>&v=<%= @snippet.version %><% end %>" target="_blank">View in new window &raquo;</a></p>
+	<pre <% if @snippet.code.size < 5000 %>name="code"<% end %> class="<%= @snippet.language %>"><%= html_escape(@snippet.code) %></pre>
+	</div>
+	<% end %>
+
+	<div id="comments">
+		<h2>Comments <small>(<%= @comments.size %>) | <% if params[:comments] == "all" %><a href="/view/snippet/<%= @snippet.id %>">View comments for this version only (<%= @snippet.comments.size %>)</a><% else %><a href="/view/snippet/<%= @snippet.id %>?comments=all">View comments for all versions (<%= @snippet.all_comments.size %>)</a><% end %></small></h2>
+		<% for comment in @comments %>
+		<div class="comment<% if comment.user_id == @snippet.user_id %> author<% end %>">
+			<% if comment.user.nil? %>
+				<p><b class="userlogin"><a href="mailto:<%= comment.email %>"><%= comment.name %></a></b> said<% if params[:comments] == "all" %> about <a href="/view/snippet/<%= comment.snippet_id %>">v.<%= comment.snippet.version %></a><% end %>: <span class="date"><%= comment.created_on.to_date.to_s(:short) %></span></p>
+			<% else %>
+				<p><b class="userlogin"><a href="/view/user/<%= comment.user_id %>"><%= comment.user.login %></a></b><% if comment.user_id == @snippet.user_id %> (author)<% end %> said<% if params[:comments] == "all" %> about <a href="/view/snippet/<%= comment.snippet_id %>">v.<%= comment.snippet.version %></a><% end %>: <span class="date"><%= comment.created_on.to_date.to_s(:short) %></span></p>
+			<% end %>
+			<p><%= textilize(comment.body) %></p>
+		</div>
+		<% end %>
+		<div id="commentForm">
+			<% form_tag :controller => 'snippets', :action => 'comment', :id => @snippet do %>
+			  <%= render :partial => 'commentForm' %>
+			  <%= submit_tag 'Post comment' %>
+			<% end %>
+		</div>
+		<% if logged_in? %>		
+		<% else %>
+		<p><a href="javascript:void(0);" onClick="$('loginBox').show();">Log in</a> if you have a Kogbox account.</p>
+		<div id="loginBox" style="display:none;width:200px;">
+			<%= render :partial => 'account/login'%>
+		</div>
+		<% end %>
+	</div>
+</div>

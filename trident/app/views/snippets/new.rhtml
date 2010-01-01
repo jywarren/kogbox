@@ -1,0 +1,27 @@
+<h1>New snippet</h1>
+<form id="snippetForm" action="/snippets/create" method="post">
+<%# form_tag :action => 'update', :id => @snippet do %>
+  <input type="hidden" id="snippetHiddenCode" value="" name="" />
+  <%= render :partial => 'form' %>
+
+  <br />
+  <br />
+  <input type="hidden" name="snippet[user_id]" value="<%= current_user.id %>" />
+
+  <a href="javascript:void(0);" onClick="$('snippetHiddenCode').name = 'snippet[code]';$('snippetHiddenCode').value = snippet_code.getCode();$('snippetForm').submit();" id="snippetSubmitLink" class="button">Save</a>
+  <input id="snippetSubmit" name="commit" type="submit" value="Save" />  | 
+	<select name="snippet[release]">
+		<option value="development" selected>development</option>
+		<option value="production">production</option>
+	</select> | <%= link_to "cancel", :action => 'list' %>
+<%# end %>
+
+<script type="text/javascript" charset="utf-8">	
+	if (userAgent() == 'gecko' || userAgent() == "msie") { // || userAgent() == "khtml"
+		$('snippetSubmit').hide();
+		$('snippetSubmitContinue').hide();
+	} else {
+		$('snippetSubmitLink').hide();
+		$('snippetSubmitLinkContinue').hide();
+	}
+</script>

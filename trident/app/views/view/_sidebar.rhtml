@@ -1,0 +1,21 @@
+<div id="sidebar">
+	<% if logged_in? %>
+		<div class="sidebar" id="userbox">
+			<h3>Welcome, <%= current_user.login.capitalize %>!<small> (<a href="/account/logout">Log out</a>)</small></h3>
+			<p>
+				<a href="/snippets/list">Your Snippets</a> | 
+				<a href="/user/<%= current_user.login %>">Profile</a>
+			</p>
+			<p>
+				<a href="/account/invite/">Send invitation &raquo;</a>
+			</p>
+			<br />
+			<p><a href="/snippets/new" class="button">New Snippet &raquo;</a></p>
+		</div>
+	<% else %>
+	<%= render :partial => 'account/login' %>
+	<% end %>
+
+	<%= render :partial => 'view/recent' %>
+
+</div>

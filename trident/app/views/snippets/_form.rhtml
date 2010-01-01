@@ -1,0 +1,59 @@
+<%= error_messages_for 'snippet' %>
+
+<!--[form:snippet]-->
+<div id="snippetDetail" <% if controller.action_name == "edit" || controller.action_name == "editor" %>style="display:none;"<% end %>>
+	<p><label for="snippet_method_name">Snippet name</label><br/>
+	<input id="snippet_method_name" name="snippet[method_name]" size="30" type="text" value="<% if @new %>my_great_snippet<% else %><%= @snippet.method_name %><% end %>" /></p>
+	<p>(coding in <span style="color:#C9541E">
+		<select id="snippet_language" onChange="snippet_code.edit(snippet_code.getCode(),language_format($('snippet_language').value));" name="snippet[language]">
+			<option <% if @snippet.language == "php" %>selected<% end %> value="php">PHP 5</option>
+			<option <% if @snippet.language == "php4" %>selected<% end %> value="php4">PHP 4</option>
+			<option <% if @snippet.language == "ruby" %>selected<% end %> value="ruby">Ruby (new!)</option>
+			<option <% if @snippet.language == "js" %>selected<% end %> value="js">JavaScript</option>
+			<option <% if @snippet.language == "html" %>selected<% end %> value="html">(X)HTML</option>
+			<option <% if @snippet.language == "css" %>selected<% end %> value="css">CSS</option>
+		</select>
+	</span>)</p>
+
+	<p><label for="snippet_published">Allow others to run your script?</label>
+	<select id="published" name="snippet[published]">
+		<option <% if @snippet.published == "public" %>selected<% end %> value="public">public</option>
+		<option <% if @snippet.published == "private" %>selected<% end %> value="private">private</option>
+	</select> | 
+	<label for="snippet_license_id">License your code (optional but encouraged!)</label>
+	<select id="licenseType" name="snippet[license_id]">
+		<option <% if @snippet.license.blank? %>selected<% end %> value="">none</option>
+		<% for license in @licenses %>
+		<option <% if @snippet.license == license || (@new && license.name == "MIT") %>selected<% end %> value="<%= license.id %>"><%= license.name %></option>
+		<% end %>
+	</select>
+
+	<p><label for="snippet_description">Description</label><br/>
+	<textarea cols="90" id="snippet_description" name="snippet[description]" rows="8"><% if @new %>This snippet is insanely great.<% else %><%= @snippet.description %><% end %></textarea></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	if ($('errorExplanation')) {
+		$('snippetDetail').show();
+	}
+</script>
+
+<p id="aboveCode">
+	<div id="aboveCodeSpace">
+	<a id="toggleCodePress" href="javascript:void();" onClick="snippet_code.toggleEditor()">Toggle syntax highlight</a>
+	<label id="snippet_code_label" for="snippet_code">Code</label> <br/>
+<script type="text/javascript" charset="utf-8">
+	if (userAgent() == "khtml") {
+		$('toggleCodePress').hide();
+	}
+</script>
+<% 
+	language = @snippet.language ? @snippet.language : "php"
+	language = "javascript" if language == "js"
+%>
+	</div>
+<textarea <% if controller.action_name == "editor" %>style="width:100%;line-height:16px;" cols="90" rows="<%= @linecount %>"<% else %>cols="90" rows="40"<% end %> id="snippet_code" name="snippet[code]" class="codepress <%= language %>"><%= html_escape(@snippet.code) %><% if @new %><%= html_escape('<h1><?php echo "Hello, world!";?></h1>
+<?php include_snippet(1,"hello_world"); ?>') %><% end %></textarea>
+</p>
+
+<!--[eoform:snippet]-->

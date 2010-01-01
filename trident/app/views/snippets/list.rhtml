@@ -1,0 +1,26 @@
+<div id="sidebar">
+	<div class="sidebar">
+		<h3>Welcome, <%= current_user.login.capitalize %>!<small> (<a href="/account/logout">Log out</a>)</small></h3>
+		<p>
+			<a href="/snippets/list">Your Snippets</a> | 
+			<a href="/view/user/<%= current_user.id %>">Profile</a>
+		</p>
+		<p>
+			<a href="/account/invite/">Send invitation &raquo;</a>
+		</p>
+		<br />
+		<p><a href="/snippets/new" class="button">New Snippet &raquo;</a></p>
+	</div>
+	
+	<%= render :partial => 'view/recent' %>
+
+</div>
+
+<h1>Your snippets (<%= current_user.snippetCount %>)</h1>
+
+<div class="snippets">
+<%= render :partial => "snippets/snippet", :collection => @snippets %>
+</div>
+<br />
+<br />
+<div style="padding-left:32px;"><a href="/snippets/new" class="button">New Snippet &raquo;</a></div>

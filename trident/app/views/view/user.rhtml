@@ -1,0 +1,7 @@
+<%= render :partial => 'sidebar' %>
+
+<h1><%= @user.login %>'s snippets (<%= @user.snippetCount %>)</h1>
+
+<div class="snippets">
+	<%= render :partial => "snippets/snippet", :collection => @snippets %>
+</div>

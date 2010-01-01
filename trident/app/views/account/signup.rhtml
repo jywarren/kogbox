@@ -1,0 +1,19 @@
+<%= error_messages_for :user %>
+<div style="float:left; width:226px; margin-right:10px" class="sidebar">
+	<h3>Sign up</h3>
+	<% form_for :user do |f| -%>
+	<p><label for="login">Login</label><br/>
+	<%= f.text_field :login %></p>
+
+	<p><label for="email">Email</label><br/>
+	<%= f.text_field :email %></p>
+
+	<p><label for="password">Password</label><br/>
+	<%= f.password_field :password %></p>
+
+	<p><label for="password_confirmation">Confirm Password</label><br/>
+	<%= f.password_field :password_confirmation %></p>
+
+	<p><input type="submit" value="Sign up" class="button" /></p>
+	<% end -%>
+</div>

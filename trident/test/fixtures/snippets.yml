@@ -1,0 +1,81 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first:
+  id: 1
+  user_id: 1
+  method_name: "hello_world"
+  code: "<?php echo 'Hello world!';?>"
+  language: "php"
+  version: 2
+  description: "The Hello, World! for Kogbox PHP."
+  license_id: 1
+  published: "public"
+  created_on: <%= 5.days.ago.to_s :db %>
+  release: "development"
+  last_marker: <%= 5.days.ago.to_s :db %>
+  count: 34
+  total_use: 1234
+#  ancestor_id: integer
+second:
+  id: 2
+  user_id: 2
+  method_name: "hello_world"
+  code: "<?php echo 'Hello world!';?>"
+  language: "php"
+  version: 2
+  description: "The Hello, World! for Kogbox PHP."
+  license_id: 1
+  published: "public"
+  created_on: <%= 5.days.ago.to_s :db %>
+  release: "development"
+  last_marker: <%= 5.days.ago.to_s :db %>
+  count: 12
+  total_use: 3234
+  ancestor_id: 1
+third:
+  id: 3
+  user_id: 2
+  method_name: "barcode_test"
+  code: "<h1>Barcode Reader</h1><?php echo 'Heres where the barcode reader would go.';?>"
+  language: "php"
+  version: 5
+  description: "A mockup of a concept for a barcode reader."
+  license_id: 2
+  published: "public"
+  created_on: <%= 1.days.ago.to_s :db %>
+  release: "development"
+  last_marker: <%= 1.days.ago.to_s :db %>
+  count: 45
+  total_use: 123
+#  ancestor_id: integer
+fourth:
+  id: 4
+  user_id: 2
+  method_name: "barcode_test"
+  code: "<h1>Barcode Reader</h1><?php echo 'Heres where the barcode reader would go.';?>"
+  language: "php"
+  version: 6
+  description: "A mockup of a concept for a barcode reader."
+  license_id: 2
+  published: "public"
+  created_on: <%= 1.days.ago.to_s :db %>
+  release: "production"
+  last_marker: <%= 1.days.ago.to_s :db %>
+  count: 45
+  total_use: 123
+#  ancestor_id: integer
+fifth:
+  id: 5
+  user_id: 1
+  method_name: "barcode_test_jeff"
+  code: "<h1>Barcode Reader</h1><?php echo 'Heres where the barcode reader would go.';?>"
+  language: "php"
+  version: 7
+  description: "A mockup of a concept for a barcode reader, copied by Jeff."
+  license_id: 2
+  published: "public"
+  created_on: <%= 1.days.ago.to_s :db %>
+  release: "production"
+  last_marker: <%= 1.days.ago.to_s :db %>
+  count: 45
+  total_use: 123
+#  ancestor_id: integer

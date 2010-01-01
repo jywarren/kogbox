@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteBase /php4/
+RewriteRule ^(.*)/(.*)/(.*) /php4/?u=$1&m=$2&v=$3 [L]
+RewriteBase /php4/
+RewriteRule ^(.*)/(.*) /php4/?u=$1&m=$2
+</IfModule>

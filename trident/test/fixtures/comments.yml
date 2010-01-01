@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+jeffs_test_comment:
+  id: 1
+  body: "This is a comment."
+  user_id: 1
+  created_on: <%= 1.days.ago.to_s :db %>
+  snippet_id: 2
+gabes_response:
+  id: 2
+  body: "That was a dumb comment, Jeff."
+  user_id: 2
+  created_on: <%= 1.days.ago.to_s :db %>
+  snippet_id: 2

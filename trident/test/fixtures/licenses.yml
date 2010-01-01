@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+gpl_2:
+  id: 1
+  name: "GNU GPL v3"
+  text: "                   GNU GENERAL PUBLIC LICENSE
+                        Version 3, 29 June 2007
+
+  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed."
+lgpl_3:
+  id: 2
+  name: "GNU LGPL v3"
+  text: "		   GNU LESSER GENERAL PUBLIC LICENSE
+                        Version 3, 29 June 2007
+
+  Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+  Everyone is permitted to copy and distribute verbatim copies
+  of this license document, but changing it is not allowed."

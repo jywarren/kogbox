@@ -1,0 +1,145 @@
+html {
+	background:#fff;
+	font-family:lucida grande, lucida sans console, helvetica, arial;
+}
+body {
+	width:100%;
+	height:100%;
+	margin:0;
+	border:0;
+	padding:0;
+}
+
+img { border:0; }
+
+a {
+	color:#444;
+	font-weight:bold;
+}
+a:hover {
+	color:#3A5A9A;
+}
+
+#content {
+	background:#f8f8f8;
+	padding:6px 10px;
+}
+h1 {
+	clear:both;
+	font-size:.8em;
+	margin:2px 0;
+}
+h1 small {
+	font-size:10px;
+}
+
+#navbar {
+	clear:both;
+	height:26px;
+	font-size:.8em;
+	border-bottom:1px solid #ddd;
+}
+
+#navbar.bottom {
+	border-bottom:none;
+	border-top:1px solid #ddd;
+}
+
+#navbar a {
+	padding:5px 5px 6px 5px;
+	display:inline-block;
+	color:#36a;
+	border-right:1px solid #ddd;
+}
+	html* #navbar a {
+		padding:5px;
+	}
+#navbar a:hover {
+	color:#666;
+}
+#navbar a img {
+	float:left;
+	margin-right:3px;
+}
+#navbar a.tab, #navbar .tab {
+	color:#555;
+	float:left;
+	text-decoration:none;
+	border-right:1px solid #ddd;
+}
+#navbar a:hover.tab {
+	color:#36a;
+	text-decoration:underline;
+	background:#f8f8f8;
+}
+#navbar a.tab.selected {
+	color:#333;
+}
+#navbar a:hover.tab.selected {
+	text-decoration:none;
+}
+#navbar a.link {
+	float:right;
+	font-size:.9em;
+	padding-top:7px;
+}
+#navbar a.button {
+	float:right;
+	background:#3A5A9A;
+	color:#fff;
+	font-weight:bold;
+	border-left:1px solid #1D3858;
+	border-right:none;
+}
+#navbar a:hover.button {
+	background:#248;
+	color:#ccf;
+}
+#navbar a.button.run {
+	background:#C3553F;
+	border-color:#97251E;
+}
+#navbar a:hover.button.run {
+	background:#9F4532;
+	color:#fcc;
+}
+
+#navbar div.right {
+	float:right;
+	padding:2px 4px;
+	font-size:.8em;
+}
+#navbar div.right input {
+	margin:0;
+	padding:0;
+}
+
+#snippetDetail {
+	font-size:.8em;
+}
+
+#snippetForm, #snippet_code {
+	width:100%;
+	display:block;
+}
+#snippet_code_label, #bottomButtons, #aboveCodeSpace {
+	display:none;
+}
+#aboveCode a#toggleCodePress {
+	margin-right:0;
+}
+.flash {
+	clear:left;
+	font-size:.9em;
+	margin:0;
+	padding:8px;
+}
+.flash.notice {
+	background:#F1FFE9;
+}
+.flash.warning {
+	background:#FFECDB;
+}
+.flash.error {
+	background:#FFDAD6;
+}

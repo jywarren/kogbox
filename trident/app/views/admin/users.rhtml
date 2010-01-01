@@ -1,0 +1,19 @@
+<div>
+	<h2>Users</h2>
+	<div id="users">
+	<style type="text/css" media="screen">
+		td { padding:4px 6px;}
+	</style>
+	<table>
+	<% for user in @users %>
+		<tr>
+			<td><a href="/view/user/<%= user.id %>"><em><%= user.login %></em></a></td>
+			<td><a href="/admin/invitations"><%= user.invitations.count %> invitations</a></td>
+			<td><%= user.snippets.count %> snippets</td>
+			<% unless user.snippets.empty? %>
+			<td>Most recently: <%= link_to user.snippets.last.method_name, :controller => "view", :action => "snippet", :id => user.snippets.last.id %>, <%= time_ago_in_words(user.snippets.last.created_on) %> ago</td>
+			<% end %>		
+		</tr>
+	<% end %>
+	</table>
+</div>

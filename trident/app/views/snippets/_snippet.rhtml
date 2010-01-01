@@ -1,0 +1,8 @@
+<div class="snippet">
+	<b><%= link_to snippet.method_name, :controller => 'view', :action => 'snippet', :id => snippet.id %></b> <span class="version">v.<%= snippet.version %></span> <a href="http://run.kogbox.com/<%= snippet.language %>/<%= snippet.user_id %>/<%= snippet.method_name %><% unless controller.action_name == "list"%><% unless snippet.latest %>/<%= snippet.version %><% end %><% end %><% if snippet.user_id == current_user.id && snippet.published == "private" %>&key=<%= @key %><% end %>" target="_blank">Run</a>
+
+<% if current_user.id == snippet.user_id %><a target="_blank" href="/snippets/editor/<%= snippet.id %>">Edit</a><% end %>
+<% unless snippet.published.blank? %>(<%= snippet.published %>)<% end %>
+<% unless snippet.license_id.blank? %>(license: <%= link_to @licenses[snippet.license_id], :controller => 'view', :action => "license", :id => snippet.license_id %>)<% end %>
+<% unless snippet.release.blank? %>(<%= snippet.release %>)<% end %>
+</div>

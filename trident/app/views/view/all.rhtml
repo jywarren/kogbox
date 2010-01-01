@@ -1,0 +1,39 @@
+<h1>Snippets</h1>
+
+<div class="column">
+<h2>Recent Snippets</h2>
+<% for result in @recent %>
+	<div class="result snippets<% if (@recent.index(result)/2.0).i? %> odd<% end %>">
+		<h3><em><%= link_to result.method_name, :controller => 'view', :action => 'snippet', :id => result.id %></em> v.<%= result.version %> <small>by <%= link_to result.user.login, :controller => 'view', :action => 'user', :id => result.user %> <span style="color:#ccd;"><%= result.created_on.to_date.to_s(:short) %></span></small></h3>
+	</div>
+<% end %>
+</div>
+
+<div class="column">
+	<h2>Most Used Snippets</h2>
+	<% for result in @used %>
+		<div class="result snippets<% if (@used.index(result)/2.0).i? %> odd<% end %>">
+			<h3><em><%= link_to result.method_name, :controller => 'view', :action => 'snippet', :id => result.id %></em> v.<%= result.version %> <small>by <%= link_to result.user.login, :controller => 'view', :action => 'user', :id => result.user %> (<%= result.total_use %> uses)</small></h3>
+		</div>
+	<% end %>	
+</div>
+
+<h1>Users</h1>
+
+<div class="column">
+	<h2>Active Users</h2>
+	<% for result in @users %>
+	<div class="result users<% if (@users.index(result)/2.0).i? %> odd<% end %>">
+		<h3><%= link_to result.login, :controller => 'view', :action => 'user', :id => result.id %> | <%= result.snippets.size %> snippets</h3>
+	</div>
+	<% end %>	
+</div>
+
+<div class="column">
+	<h2>New Users</h2>
+	<% for result in @newusers %>
+	<div class="result users<% if (@newusers.index(result)/2.0).i? %> odd<% end %>">
+		<h3><%= link_to result.login, :controller => 'view', :action => 'user', :id => result.id %> | <%= result.snippets.size %> snippets</h3>
+	</div>
+	<% end %>	
+</div>

@@ -1,0 +1,42 @@
+<h1>Editing snippet "<span style="color:#C9541E"><%= @snippet.method_name %></span>" v.<%= @snippet.version %> <small>(written in <span style="color:#C9541E"><%= @snippet.language.upcase %></span>)</small></h1>
+<% unless controller.action_name == "editor" %>
+<a class="button" href="http://run.kogbox.com/<%= @snippet.language %>/<%= @snippet.user_id %>/<%= @snippet.method_name %><% unless @snippet.latest %>/<%= @snippet.version %><% end %><% if @snippet.user == current_user && @snippet.published == "private" %>&key=<%= @key %><% end %>" target="_blank">Run</a> | <a href="javascript:void(0);" onClick="$('snippetDetail').toggle();">Snippet detail [+]</a>
+<% end %>
+<% unless controller.action_name == "editor" %>
+ | <a id="toggleFullscreen" href="/snippets/editor/<%= @snippet.id %>" target="_blank">Open in popup editor (beta) &raquo;</a>
+<% end %>
+<% unless controller.action_name == "editor" %>
+<br />
+<br />
+<form id="snippetForm" action="/snippets/update/<%= @snippet.id ? @snippet.id : @oldSnippet.id %>" method="post" onSubmit="submitFormContinue();">
+<input name="editor" value="edit" type="hidden" />	
+<% end %>
+  <input type="hidden" id="snippetHiddenCode" value="" name="" />
+  <%= render :partial => 'form' %>
+<div id="bottomButtons">
+  <input id="snippetSubmit" name="commit" type="submit" value="Save" /> 
+  <a href="javascript:void(0);" onClick="submitForm();" id="snippetSubmitLink" class="button">Save</a>
+  <input type="checkbox" name="over"<% if @save_over == "true" %> checked="checked"<% end %> /> 
+  <label for="over">Save over last version</label>  | 
+	<select name="snippet[release]">
+		<option value="development" selected>development</option>
+		<option value="production">production</option>
+	</select>
+  | <%= link_to "cancel", :controller => 'view', :action => 'snippet', :id => @snippet.id %>
+  <hr style="border:none;padding-bottom:10px;" />
+  <input id="continue_hidden" name="save_and_continue" type="hidden" value="" />
+  <a href="javascript:void(0);" onClick="submitFormContinue();" id="snippetSubmitLinkContinue" class="button">Save and continue editing</a>
+</div>
+</form>
+
+<script type="text/javascript" charset="utf-8">
+	if (userAgent() == 'gecko' || userAgent() == "msie") { // || userAgent() == "khtml"
+		$('snippetSubmit').hide();
+		<% if params[:action] != "editor" %>$('snippetSubmitContinue').hide();<% end %>
+	} else {
+		$('snippetSubmit').hide();
+		// $('snippetSubmitLink').hide();
+		<% if params[:action] != "editor" %>$('snippetSubmitContinue').hide();<% end %>
+		// $('snippetSubmitLinkContinue').hide();
+	}
+</script>

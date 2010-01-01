@@ -1,0 +1,3 @@
+<IfModule mod_rewrite.c>
+Redirect / http://php4.kogbox.com/
+</IfModule>

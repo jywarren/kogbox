@@ -1,0 +1,18 @@
+<div class="sidebar">
+	<h3>Log in</h3>
+	<% form_tag :controller => 'account', :action => 'login' do %>
+	<p><label for="login">Username</label><br/>
+	<%= text_field_tag 'login' %></p>
+
+	<p><label for="password">Password</label><br/>
+	<%= password_field_tag 'password' %></p>
+
+	<!-- Uncomment this if you want this functionality
+	<p><label for="remember_me">Remember me:</label>
+	<%= check_box_tag 'remember_me' %></p>
+	-->
+
+	<p><input type="submit" value="Log in" class="button" /></p>
+	<% end -%>
+	<p>or <a href="/account/signup">Sign up</a></p>
+</div>

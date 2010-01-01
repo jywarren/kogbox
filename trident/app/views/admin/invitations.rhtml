@@ -1,0 +1,24 @@
+<div>
+	<h2>Invitations per user</h2>
+	<div id="users">
+	<style type="text/css" media="screen">
+		td { padding:4px 6px;}
+	</style>
+	<table>
+	<% for user in @users %>
+		<tr>
+			<td><a href="/view/user/<%= user.id %>"><em><%= user.login %></em></a></td>
+			<td><%= user.invitations.count %> invitations</td>
+			<% unless user.invitations.empty? %>
+				<td>
+				<ul>
+				<% for invitation in user.invitations %>
+					<li><%= invitation.recipient %></li>
+				<% end %>
+				</ul>
+				</td>
+			<% end %>
+		</tr>
+	<% end %>
+	</table>
+</div>

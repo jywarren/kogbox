@@ -1,0 +1,30 @@
+<%= render :partial => 'view/sidebar' %>
+
+
+<h2>Search:</h2>
+<form class="search" action="/search" method="get">
+		<input type="input" name="q" value="<%= params[:q] %>" /> <select id="searchType" name="s">
+		<option <% if params[:s] == "snippets" %>selected="selected"<% end %> value="snippets">Snippets</option>
+		<option <% if params[:s] == "users" %>selected="selected"<% end %> value="users">Users</option>
+		</select>
+	<input type="submit" value="Search" />
+</form>
+<div id="results">
+<% unless @results.blank? %>
+<h2>Search results for '<span style='color:#222'><%= params[:q] %></span>' (<%= @results.size %>):</h2>
+<% for result in @results %>
+	<% if params[:s] == "snippets" %>
+	<div class="result snippets<% if (@results.index(result)/2.0).i? %> odd<% end %>">
+		<h3><em><%= link_to result.method_name, :controller => 'view', :action => 'snippet', :id => result.id %></em> v.<%= result.version %> <small>by <%= link_to result.user.login, :controller => 'view', :action => 'user', :id => result.user_id %></small></h3>
+	</div>
+	<% elsif params[:s] == "users" %>
+	<div class="result users<% if (@results.index(result)/2.0).i? %> odd<% end %>">
+		<h3><%= link_to result.login, :controller => 'view', :action => 'user', :id => result.id %> | <%= result.snippets.size %> snippets</h3>
+	</div>
+	<% end %>
+<% end %>
+<% end %>
+<% if @results.blank? %>
+	<p>No results.</p>
+<% end %>
+</div>

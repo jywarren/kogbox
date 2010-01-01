@@ -1,0 +1,463 @@
+html {
+	background:#C3E7B4 url('/images/bg.png');
+}
+
+body {
+	width:750px;
+	margin:20px auto;
+	padding:24px;
+	font-family:lucida grande, lucida sans console, helvetica, arial;
+	background:#fff;
+	border:3px solid #444;
+	font-size:.7em;
+	color:#555;
+}
+
+img {
+	border:0;
+}
+a {
+	color:#444;
+	font-weight:bold;
+}
+a:hover {
+	color:#3A5A9A;
+}
+a.icon {
+	text-decoration:none;
+	display:inline-block;
+	vertical-align:bottom;
+}
+
+p.flash {
+	padding-bottom:4px;
+}
+
+a.button {
+	border:2px solid #1D3858;
+	background:#3A5A9A;
+	color:#fff;
+	font-size:1.3em;
+	font-weight:bold;
+	padding:6px;
+}
+a.button:hover {
+	background:#248;
+	color:#ccf;
+}
+
+h2.metabook {
+	margin-top:3px;
+	float:left;
+	color:#3A5A9A;
+	font-size:2em;
+	font-weight:normal;
+	letter-spacing:-1px;
+	margin-bottom:2px;
+}
+
+h1 small {
+	font-size:.6em;
+}
+
+em, .red, .result em a, h1 em a {
+	color:#C9541E;
+	font-style:normal;
+}
+
+a em, em a {
+	text-decoration:underline;
+}
+a:hover em, em a:hover {
+	color:#A1361D;
+}
+
+#header, #footer {
+	text-align:center;
+	color:#aaa;
+}
+
+#header {
+	width:400px;
+	margin:0 auto 30px auto;
+}
+
+#header a, #footer a {
+	color:#888;
+	font-weight:bold;
+	text-decoration:none;
+}
+
+#header a:hover, #footer a:hover {
+	color:#666;
+}
+
+#header img {
+	margin-bottom:10px;
+}
+
+img.front {
+	border:1px solid #aaa;
+}
+
+#sidebar {
+	float:right;
+}
+
+.sidebar {
+	background:#F2C7AD;
+	padding:4px 6px;
+	border:2px solid #D29A6C;
+	color:#5E3D38;
+	font-size:.9em;
+	margin-bottom:10px;
+	width:157px;
+	padding-bottom:16px;
+	clear:right;
+}
+#loginBox .sidebar {
+	clear:none;
+}
+
+	html* .sidebar, body:first-of-type .sidebar {
+		padding:4px;
+		padding-bottom:10px;
+	}
+
+.sidebar a {
+	color:#36201d;
+}
+
+.sidebar a:hover {
+	color:#5E3D38;
+}
+
+.sidebar a.button {
+	color:#fff;
+}
+
+.sidebar a.button:hover {
+	background:#248;
+	color:#ccf;
+	margin-top:20px;
+}
+
+.sidebar h3 {
+	color:#36201d;
+	margin:4px 0 6px 0;
+	font-size:1.2em;
+}
+
+	html* .sidebar h3 {
+		padding:0 3px;
+	}
+
+.sidebar p {
+	margin:2px 0 4px 0;
+}
+
+	html* .sidebar p {
+		margin:2px 3px 4px 3px;
+	}
+	body:first-of-type .sidebar p {
+		margin:2px 2px 4px 2px;
+	}
+
+.sidebar form {
+	font-weight:bold;
+}
+
+	html* .sidebar form label {
+		padding:0 3px;
+	}
+	body:first-of-type .sidebar form label {
+		padding:0;
+	}
+
+.sidebar form input {
+	border:2px solid #D29A6C;
+	padding:4px;
+	font-size:1.1em;
+}
+
+	body:first-of-type .sidebar form input {
+		margin:0;
+	}
+	body:first-of-type .sidebar form {
+		padding:0;
+	}
+
+.sidebar form input.button {
+	border:2px solid #1D3858;
+	background:#3A5A9A;
+	color:#fff;
+	font-weight:bold;
+	float:right;
+	padding:3px;
+}
+
+.sidebar form input.button:hover {
+	background:#248;
+	color:#ccf;
+}
+
+.snippets {
+	clear:left;
+}
+
+.snippets div.icon {
+	background:url('/images/icons/code.png') top left no-repeat;
+	margin-top:4px;
+}
+.sidebar .comments div.comment {
+	background:url('/images/icons/comment.png') top left no-repeat;
+	margin-top:4px;
+	margin-bottom:12px;
+}
+.sidebar .comments p {
+	word-wrap: break-word;
+	overflow: hidden;
+	padding-left:17px;
+}
+.snippets p {
+	padding-left:4px;
+}
+.snippets b {
+	padding-left:15px;
+}
+
+.sidebar .snippets div {
+	padding:0 3px;
+	margin-bottom:6px;
+}
+
+.sidebar .snippets b {
+	font-size:1.2em;
+}
+
+#main {
+	width:520px;
+}
+
+#main code {
+	background:#FEFBE4;
+	font-size:1.3em;
+}
+
+.paragraph {
+	width:400px;
+}
+
+a.method_name {
+	color:#C9541E;
+	text-decoration:none;
+}
+a:hover.method_name {
+	color:#B14C38;
+	background:#eee;
+	text-decoration:none;
+}
+
+#viewCode p {
+	text-align:right;
+}
+#viewCode pre {
+	border:2px solid #ccc;
+	margin:3px 0;
+	padding:6px;
+	font-size:1.1em;
+	display:block;
+}
+
+.text {
+	line-height:1.6em;
+	clear:left;
+	height:120px;
+}
+
+.text img {
+	float:left;
+	margin-right:16px;
+}
+
+.text p {
+	width:360px;
+	float:left;
+	margin-top:8px;
+}
+
+.snippets {
+	line-height:1.9em;
+}
+
+.snippets .snippet b {
+	display:block;
+	width:155px;
+	float:left;
+	text-align:right;
+	padding:0 6px;
+	color:#C3553F;
+}
+
+.snippets span.version {
+	display:block;
+	float:left;
+	width:34px;
+}
+
+#versions p.version {
+	margin:0;
+	padding:3px;
+}
+#versions p.version.current {
+	background:#cea88f;
+	font-style:italic;
+}
+#versions p.version:hover {
+	background:#deb89f;
+}
+
+.snippets a {
+	padding:0 3px;
+}
+
+.snippets .snippet b a {
+	color:#C3553F;
+}
+.snippets .snippet b a:hover {
+	color:#A1361D;
+}
+
+form.search {
+	clear:left;
+	border-bottom:2px solid #ccc;
+	padding-bottom:16px;
+	padding-top:4px;
+	width:500px;
+}
+
+.result h3 {
+	padding:0 0 0 20px;
+	margin:0;
+}
+.result.snippets h3 {
+	background:url('/images/icons/code.png') top left no-repeat;
+}
+.result.users h3 {
+	background:url('/images/icons/kogboxer-grey.png') top left no-repeat;
+}
+
+.result {
+	clear:left;
+	padding:8px 6px;
+	margin:0;
+}
+
+.result.odd {
+	background:#E7EEF4;
+}
+
+#results {
+	border-bottom:2px solid #ccc;
+	width:500px;
+}
+
+.column {
+	width:320px;
+	float:left;
+	margin-right:40px;
+	margin-bottom:20px;
+}
+
+#comments h2 {
+	padding-bottom:3px;
+	margin-top:30px;
+	border-bottom:2px solid #ccc;	
+}
+
+#comments #commentForm input {
+	margin-bottom:4px;
+}
+
+#comments .comment {
+	border-bottom:1px dotted #ccc;
+	width:400px;
+}
+#comments .comment pre, #comments .comment code {
+	background:#FEFBE4;
+	font-size:1.1em;
+	display:block;
+	margin:8px 12px 12px 8px;
+	padding:6px;
+	font-family:monaco,lucida console,monospace;
+}
+
+#comments .comment .userlogin a {
+	text-decoration:none;
+	background-image:url('/images/icons/kogboxer-grey.png');
+	background-repeat: no-repeat;
+	background-position: 1px left;
+	padding:3px 0 3px 16px;
+}
+#comments .comment.author .userlogin a {
+	background-image:url('/images/icons/kogboxer.png');
+}
+
+#comments .comment .date {
+	color:#ccc;
+}
+
+#comments .comment.author {
+	background:#EEC8B4;
+	padding:1px 6px;
+	border-bottom:1px dotted #CD9C79;
+}
+
+#comments .comment.author .date {
+	color:#CD9C79;
+}
+
+#comments h2 small a {
+	font-size:.8em;
+}
+
+.comments .comment span a {
+	text-decoration:none;
+}
+.comments .comment span a:hover {
+	text-decoration:underline;
+}
+
+#snippetForm #snippet_method_name {
+	color:#C9541E;
+	font-weight:bold;
+	font-size:1.4em;
+}
+
+p#aboveCode a {
+	margin:0 14px;
+	padding:3px 0;
+	display:block;
+	float:right;
+}
+
+textarea#snippet_description {
+	background:#FFFBF1;
+}
+textarea#snippet_code {
+	font-size:1.1em;
+	font-family:lucida console, monaco, monospace;
+}
+html* textarea#snippet_code {
+	font-size:1.3em;
+}
+
+pre.license {
+	border:2px solid #ccc;
+	padding:10px;
+	font-size:1.3em;
+}
+
+#footer {
+	clear:both;
+}

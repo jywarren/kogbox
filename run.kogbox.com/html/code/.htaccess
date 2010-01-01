@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteBase /code/
+RewriteRule ^(.*)/(.*)/(.*) /code/?u=$1&m=$2&v=$3 [L]
+RewriteBase /code/
+RewriteRule ^(.*)/(.*) /code/?u=$1&m=$2
+</IfModule>

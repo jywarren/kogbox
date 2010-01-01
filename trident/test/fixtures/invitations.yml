@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  user_id: 1
+  recipient: "dave@example.com"
+  key: "ask24kh3153kh3b4j3k"
+two:
+  id: 2
+  user_id: 1
+  recipient: "bill@example.com"
+  key: "k3n4k5l19dkd84jj8e9fk"
