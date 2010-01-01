@@ -1,0 +1,23 @@
+   888                        888                        
+   888                        888                        
+   888                        888                        
+   888  888  .d88b.   .d88b.  88888b.   .d88b.  888  888 
+   888 .88P d88""88b d88P"88b 888 "88b d88""88b `Y8bd8P' 
+   888888K  888  888 888  888 888  888 888  888   X88K   
+   888 "88b Y88..88P Y88b 888 888 d88P Y88..88P .d8""8b. 
+   888  888  "Y88P"   "Y88888 88888P"   "Y88P"  888  888 
+                          888                            
+                     Y8b d88P                            
+                      "Y88P"                             
+
+Kogbox lets users create snippets – small scripts limited to 100 lines and 10 seconds of execution time. Write as many as you like, and combine your snippets with others' to build simple web tools. Kogbox was designed to support PHP out of the box, but Ruby support is partially complete and in theory Kogbox functions can be written in any scripting language.
+
+The Kogbox.com site, which this code drives, is an attempt to cultivate a community of coders who not only share example code, but actively contribute to a live coding environment, and can call on each others' snippets at any time. In a way, it's a continually growing real-time coding library, all running server-side on cloud infrastructure.
+
+No server setup, no install process, no hassle. Just enter your code and hit 'Publish'. You can keep scripts private or share them with everyone; open-source your code with your choice of license.
+
+Easily include others' work directly into your own code with the include_snippet() function. License your own to be included in others' work. One hand washes the other.
+
+Kogbox was created by Jeffrey Warren of Vestal Design. Jeff also created ARMSFLOW.org, Cartagen, and is a co-founder of Weardrobe. Read more about his work here:
+
+http://unterbahn.com
